@@ -1,0 +1,81 @@
+<!-- This snippet uses Font Awesome 5 Free as a dependency. You can download it at fontawesome.io! -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<div class="container-fluid ps-md-0">
+  <div class="row g-0">
+    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+    <div class="col-md-8 col-lg-6">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto">
+              <h3 class="login-heading mb-4">Register</h3>
+
+              <form [formGroup]="validationForm" (ngSubmit)="onSubmitUser()">
+                <div class="row">
+                  <div class="mb-3">                    
+                      <label class="form-label" for="form1">Username</label>                      
+                      <input
+                        type="text"
+                        id="form1"
+                        class="form-control"
+                        formControlName="userName"                         
+                      />                      
+                      <div *ngIf="userName?.invalid && (userName?.dirty || userName?.touched)"> Username is required </div>                                          
+                  </div>
+                  <div class="mb-3">                    
+                      <label class="form-label" for="form2">Password</label>                      
+                      <input
+                        type="password"
+                        id="form2"
+                        class="form-control"
+                        formControlName="password1"                        
+                      />                      
+                      <div *ngIf="password1?.invalid && (password1?.dirty || password1?.touched)"> Password is required </div>                                          
+                  </div>
+                  <div class="mb-3">                    
+                      <label class="form-label" for="form3">Confirm password</label>                      
+                      <input
+                        type="password"
+                        id="form3"
+                        class="form-control"
+                        formControlName="password2"                        
+                      />                                           
+                      <div *ngIf="password2?.invalid && (password2?.dirty || password2?.touched)"> 
+                        <div *ngIf="password2.errors?.['required']">
+                          Password confirmation is required
+                        </div>
+                        <div *ngIf="password2.hasError('mustMatch')">
+                          Password fields must match
+                        </div>                                               
+                      </div>                                          
+                  </div>               
+
+                  <div class="mb-3">
+                    <label for="selectRole" class="form-label">Select a role</label>
+                    <select class="form-select" id="form4" formControlName="selectRole" (change)="onSelect($event)">
+                      <option *ngFor="let userRole of userRoles" [ngValue]="userRole">{{ userRole.name }}</option>
+                    </select>
+
+                    <div *ngIf="selectRole?.touched &&  selectRole?.invalid"> Please select an option </div>                    
+                  </div>                                         
+
+                  <div class="mb-3">
+                    <button class="btn btn-lg btn-success btn-login fw-bold text-uppercase" type="submit">Register</button>
+                  </div>                     
+                </div>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  

@@ -1,0 +1,39 @@
+#container {
+    display: flex;
+    padding: 20px 30px;
+    margin-bottom: 20px;
+    background-color: #198754;
+    color: whitesmoke;
+    
+    #links {
+        color: snow;
+        flex-grow: 1;
+        display: flex;
+        gap: 20px; 
+        justify-content: right;
+    }    
+}
+
+a {
+    color: snow;
+}
+
+a:link {
+    color: snow;
+}
+
+a:visited {
+    color:gray;
+}
+
+a:focus {
+    color:darkolivegreen;
+}
+
+a:hover {
+    color:darkolivegreen;
+}
+
+a:active {
+    color: snow;
+}
